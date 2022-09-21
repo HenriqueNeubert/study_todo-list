@@ -1,4 +1,8 @@
 @charset "UTF-8";
+* {
+  font-family: "M PLUS 1 Code", sans-serif;
+}
+
 /*!
  * Bootstrap  v5.2.1 (https://getbootstrap.com/)
  * Copyright 2011-2022 The Bootstrap Authors
@@ -10766,7 +10770,7 @@ textarea.form-control-lg {
   }
 }
 body {
-  background-color: #7f2ae0;
+  background-color: #464646;
 }
 
 /*# sourceMappingURL=custom.css.map */

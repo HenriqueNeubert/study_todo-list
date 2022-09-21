@@ -11,7 +11,7 @@ $dark:          #464646;
 // scss-docs-start theme-colors-map
 $theme-colors: ( 
   "primary":    $primary,
-  "secondary":  $secondary,
+  "secondary":  $secondary, 
   "success":    $success,
   "info":       $info,
   "warning":    $warning,
@@ -28,9 +28,9 @@ $container-max-widths: (
   xxl: 1320px 
 ) !default;
 
+*{
+  font-family: 'M PLUS 1 Code', sans-serif;
+}
 
 @import "../node_modules/bootstrap/scss/bootstrap";
-
-body{
-  background-color: $secondary;
-}
+@import "style";

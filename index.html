@@ -4,13 +4,87 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="archive/comp/custom.css">
-  <title>CRONOMETRO - JAVASCRIPT</title>
+  <link rel="stylesheet" href="archive/compiled/custom.css">
+  <script type="module" src="archive/custom.js" defer></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+1+Code:wght@100;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>To Do - List - JAVASCRIPT</title>
 </head>
 <body>
-  <main>
-    <section class="container-sm d-flex justify-content-center py-5 bg-danger">
-      <a class="btn btn-primary text-light" href="#">INICIAR</a>
+  <main class="py-5">
+    <section>
+      <div class="container text-center text-white">  
+        <div CLASS="col-6 mx-auto">
+
+            <h1>To do List</h1>
+
+          <form id="createForm" action="">
+            <p>Adicione a sua tarefa:</p>
+            <div class="d-flex">
+              <input class="form-control" type="text" id="createImput" placeholder="O que você vai fazer?">
+              <button class="btn btn-secondary ms-3" type="submit">
+                <i class="fa-thin fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
+          
+          <form id="editForm" action="">
+            <p>Edite a sua tarefa:</p>
+            <div class="d-flex">
+              <input class="form-control" type="text" id="editImput">
+              <button class="btn btn-secondary ms-3" type="submit">
+                <i class="fa-solid fa fa-check" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button class="btn btn-secondary" id="editCancel">
+              Cancelar
+            </button>
+          </form>
+
+          <div id="toobar">
+            <div id="search">
+              <h4>
+                Pesquisar:
+              </h4>
+              <form id="searchForm" action="">
+                <div class="d-flex">
+                  <input class="form-control" type="text" id="searchImput" placeholder="Buscar">
+                  <button class="btn btn-secondary ms-3" id="eraseButton">
+                    <i class="fa fa-times" aria-hidden="true"></i>                  
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+
+          <div id="filter">
+            <h4>Filtrar</h4>
+            <select class="form-select" name="" id="filterSelect">
+              <option value="all">Todos</option>
+              <option value="done">Feitos</option>
+              <option value="todo">A fazer</option>
+            </select>
+          </div>
+
+          <div id="todoList">
+            <div class="todo">
+              <h3>Estudar php</h3>
+              <button class="btn btn-danger finish-todo">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </button>
+              <button class="btn btn-danger edit-todo">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+              </button>
+              <button class="btn btn-danger remove-todo">
+                <i class="fa fa-trash-o" aria-hidden="true"></i>
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </div>
     </section>
   </main>
 </body>
