@@ -1,0 +1,24 @@
+{
+  "name": "study-stopwatch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "sudo docker start xampp8 && cd ./archive && sass --watch custom.scss:compiled/custom.css",
+    "stop": "sudo docker stop xampp8 -t 0"    
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HenriqueNeubert/study-stopwatch.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HenriqueNeubert/study-stopwatch/issues"
+  },
+  "homepage": "https://github.com/HenriqueNeubert/study-stopwatch#readme",
+  "dependencies": {
+    "bootstrap": "^5.2.1",
+    "jquery": "^3.6.1"
+  }
+}
