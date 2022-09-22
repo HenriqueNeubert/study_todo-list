@@ -8,7 +8,16 @@ const createImput = document.querySelector('#createImput');
 
 
 //FUNCTIONS
-function saveTodo(text)
+function handleTodo()
+{
+  handleCreateImput();
+
+  createImput.value = '';
+  
+  createImput.focus();
+}
+
+function createTodo(text)
 {
   const todo = document.createElement('div');//? cria div
   todo.classList.add('todo'); //? adiciona classe .todo
@@ -36,10 +45,7 @@ function saveTodo(text)
   btnRemove.innerHTML = '<i class="fa fa-trash-o" aria-hidden="true"></i>';
   divBtn.appendChild(btnRemove);
 
-  console.log(todo);
-  // const btn = document.createElement('button');//? cria botao
-
-  
+  todoList.appendChild(todo);
 }
 
 function handleCreateImput()
@@ -47,17 +53,28 @@ function handleCreateImput()
   const createImputValue = createImput.value;
 
   if(createImputValue){
-    saveTodo(createImputValue)
+    createTodo(createImputValue)
   }
 }
 
 //EVENTS
-todoForm.addEventListener('submit', (e) => { //! criar uma funcao separada
+todoForm.addEventListener('submit', (e) => { //! ESTUDAR
   //funcao anonima:
   //permitir passá-la como se 
   //fosse um objeto qualquer, 
   //que você pode atribuir a uma variável
   e.preventDefault();//? não envia form
 
-  handleCreateImput();
-})
+  handleTodo();
+});
+
+document.addEventListener("click", (e) => { //! não especifica o elemento
+  const targetE1 = e.target; //! ESTUDAR
+  //? pega o elemento
+
+
+  if(targetE1.classList.contains("finish-todo")){//? verifica se contem tal clase
+    console.log('finalizar');
+  }
+
+});

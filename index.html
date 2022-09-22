@@ -16,16 +16,17 @@
   <main class="py-5">
     <section>
       <div class="container text-center text-white">  
-        <div class="col-6 mx-auto p-5" id="todo">
+        <div class="col-6 mx-auto p-5" id="todo">,
+          <img class="imageBg" src="./archive/image/spaceC.png" alt="">
 
-          <h1>Todo List</h1>
+          <h1 class="text-danger fw-bold">Todo List</h1>
           <!--ADD-->
           <div class="py-5 mb-3 border-bottom border-top">
             <form id="createForm" action="">
               <p>Add a task: </p>
               <div class="d-flex">
                 <input class="form-control" type="text" id="createImput" placeholder="what will you do?">
-                <button class="btn btn-secondary ms-3" type="submit">
+                <button class="btn btn-danger ms-3" type="submit">
                   <i class="fa-thin fa fa-plus" aria-hidden="true"></i>
                 </button>
               </div>
@@ -33,7 +34,7 @@
           </div>
           <!--ADD-->
           <!--EDIT-->
-          <div class="py-5 mb-3 border-bottom border-top">
+          <div class="py-5 mb-3 border-bottom border-top d-none">
             <form id="editForm" action="">
               <p>Edit a task:</p>
               <div class="d-flex">
@@ -42,7 +43,7 @@
                   <i class="fa-solid fa fa-check" aria-hidden="true"></i>
                 </button>
               </div>
-              <button class="btn btn-secondary mt-3" id="editCancel">
+              <button class="btn btn-danger mt-3" id="editCancel">
                 Cancel
               </button>
             </form>
@@ -58,7 +59,7 @@
                 <form id="searchForm" action="">
                   <div class="d-flex">
                     <input class="form-control" type="text" id="searchImput" placeholder="Search">
-                    <button class="btn btn-secondary ms-3" id="eraseButton">
+                    <button class="btn btn-danger ms-3" id="eraseButton">
                       <i class="fa fa-times" aria-hidden="true"></i>                  
                     </button>
                   </div>
@@ -78,35 +79,7 @@
           <!--LIST-->
           <div id="todoList">
 
-            <div class="todo done">
-              <h6>Comprar comida para a Phoebe</h6>
-              <div class="d-flex gap-1">
-                <button class="btn btn-danger finish-todo">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </button>
-                <button class="btn btn-danger edit-todo">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </button>
-                <button class="btn btn-danger remove-todo">
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="todo">
-              <h6>Ir ao super mercado</h6>
-              <div class="d-flex gap-1">
-                <button class="btn btn-danger finish-todo">
-                  <i class="fa fa-check" aria-hidden="true"></i>
-                </button>
-                <button class="btn btn-danger edit-todo">
-                  <i class="fa fa-pencil" aria-hidden="true"></i>
-                </button>
-                <button class="btn btn-danger remove-todo">
-                  <i class="fa fa-trash-o" aria-hidden="true"></i>
-                </button>
-              </div>
-            </div>
+            <!---List addeded from JS--->
 
           </div>
           <!--LIST-->
