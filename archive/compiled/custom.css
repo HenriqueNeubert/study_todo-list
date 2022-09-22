@@ -10778,9 +10778,13 @@ h1, .h1 {
   position: relative;
 }
 
+.hide {
+  display: none !important;
+}
+
 #todo {
   z-index: 1;
-  max-width: 350px;
+  max-width: 320px;
   position: relative;
   border-radius: 10px;
   overflow: hidden;
@@ -10849,10 +10853,21 @@ main {
   padding-right: 5px !important;
 }
 
-.todo .btn {
-  padding: 0 !important;
-  width: 25px;
-  height: 25px;
+#todo .form-control, #todo select {
+  height: 30px !important;
+}
+
+#todo #editCancel {
+  width: auto !important;
+  margin-inline: auto !important;
+}
+
+#todo .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px !important;
+  height: 30px !important;
 }
 
 .todo .btn i {
@@ -10864,6 +10879,10 @@ main {
 
 .todo.done {
   background-color: #464646;
+}
+
+.todo.done .btn.finish-todo {
+  background-color: #e24e4e !important;
 }
 
 .todo.done .btn {

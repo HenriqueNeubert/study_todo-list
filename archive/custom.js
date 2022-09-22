@@ -4,10 +4,49 @@ const editImput = document.querySelector('#editImput');
 const todoForm = document.querySelector('#createForm');
 const editCancel = document.querySelector('#editCancel');
 const createImput = document.querySelector('#createImput');
-
+let oldInputValue;
 
 
 //FUNCTIONS
+
+function handleButtons(e)
+{
+  //? pega o elemento
+  const targetEl = e.target; //! ESTUDAR
+  //? closest = pega o elemento parente mais proximo que tenha tal classe
+  //? resumindo, ele pega o click do botao, e vai até a div que 
+  //? tem a class .todo e coloca ela colo a const parentEl
+  const parentEl = targetEl.closest('.todo');
+  let todoTitle
+
+  if(parentEl && parentEl.querySelector('h6')){
+    todoTitle = parentEl.querySelector('h6').innerText    
+  }
+
+
+  if(targetEl.classList.contains("finish-todo")){//? verifica se contem tal clase
+    // console.log('finalizar');
+    parentEl.classList.toggle('done');
+  }
+
+  if(targetEl.classList.contains("remove-todo")){
+    parentEl.remove();
+  }
+
+  if(targetEl.classList.contains("edit-todo")){
+    handleToggleForms();
+    editImput.value = todoTitle;
+    oldInputValue = todoTitle
+  }
+}
+
+const handleToggleForms = () => //!ESTUDAR 
+{  
+  editForm.classList.toggle('hide')  
+  todoForm.classList.toggle('hide')
+  todoList.classList.toggle('hide')
+}
+
 function handleTodo()
 {
   handleCreateImput();
@@ -15,6 +54,22 @@ function handleTodo()
   createImput.value = '';
   
   createImput.focus();
+}
+
+const handleUpdateTodo = (editInputValue) => //!ESTUDAR 
+{
+  const todos = document.querySelectorAll(".todo");
+
+  todos.forEach((todo) => {
+    let todoTitle = todo.querySelector("h6")
+    
+    console.log(todoTitle);
+    console.log(oldInputValue);
+    if(todoTitle.innerText === oldInputValue){      
+      todoTitle.innerText = editInputValue;
+    }
+  })
+
 }
 
 function createTodo(text)
@@ -36,7 +91,7 @@ function createTodo(text)
   divBtn.appendChild(btnFinish);
 
   const btnEdit = document.createElement('button');//? cria div
-  btnEdit.classList.add('btn', 'btn-danger', 'finish-todo'); //? adiciona classe 
+  btnEdit.classList.add('btn', 'btn-danger', 'edit-todo'); //? adiciona classe 
   btnEdit.innerHTML = '<i class="fa fa-pencil" aria-hidden="true"></i>';
   divBtn.appendChild(btnEdit);
 
@@ -68,13 +123,24 @@ todoForm.addEventListener('submit', (e) => { //! ESTUDAR
   handleTodo();
 });
 
+editCancel.addEventListener('click', (e) => { 
+  e.preventDefault();
+
+  handleToggleForms();
+});
+
 document.addEventListener("click", (e) => { //! não especifica o elemento
-  const targetE1 = e.target; //! ESTUDAR
-  //? pega o elemento
+  handleButtons(e)
+});
 
+editForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  
+  const editInputValue = editImput.value;
 
-  if(targetE1.classList.contains("finish-todo")){//? verifica se contem tal clase
-    console.log('finalizar');
+  if (editInputValue) {
+    handleUpdateTodo(editInputValue);
   }
 
+  handleToggleForms();  
 });

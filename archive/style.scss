@@ -7,9 +7,13 @@ h1{
   position: relative;
 }
 
+.hide{
+  display: none!important;
+}
+
 #todo{
   z-index: 1;
-  max-width: 350px;
+  max-width: 320px;
 
   position: relative;
 
@@ -93,11 +97,21 @@ main{
   padding-right: 5px!important;
 }
 
-.todo .btn{
-  padding: 0!important;
+#todo .form-control, #todo select{
+  height: 30px!important;
+}
 
-  width: 25px;
-  height: 25px;
+#todo #editCancel{
+  width: auto!important;
+  margin-inline: auto!important;
+}
+
+#todo .btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px!important;
+  height: 30px!important;
 }
   
 .todo .btn i{
@@ -110,6 +124,10 @@ main{
 
 .todo.done{
   background-color: $dark;
+}
+
+.todo.done .btn.finish-todo{
+  background-color: $danger!important;
 }
 
 .todo.done .btn{

@@ -16,38 +16,34 @@
   <main class="py-5">
     <section>
       <div class="container text-center text-white">  
-        <div class="col-6 mx-auto p-5" id="todo">,
+        <div class="col-6 mx-auto py-5 px-3" id="todo">,
           <img class="imageBg" src="./archive/image/spaceC.png" alt="">
 
           <h1 class="text-danger fw-bold">Todo List</h1>
           <!--ADD-->
-          <div class="py-5 mb-3 border-bottom border-top">
-            <form id="createForm" action="">
-              <p>Add a task: </p>
-              <div class="d-flex">
-                <input class="form-control" type="text" id="createImput" placeholder="what will you do?">
-                <button class="btn btn-danger ms-3" type="submit">
-                  <i class="fa-thin fa fa-plus" aria-hidden="true"></i>
-                </button>
-              </div>
-            </form>
-          </div>
+          <form class="py-5 mb-3 border-bottom border-top" id="createForm" action="">
+            <p>Add a task: </p>
+            <div class="d-flex">
+              <input class="form-control" type="text" id="createImput" placeholder="what will you do?">
+              <button class="btn btn-danger ms-3" type="submit">
+                <i class="fa-thin fa fa-plus" aria-hidden="true"></i>
+              </button>
+            </div>
+          </form>
           <!--ADD-->
           <!--EDIT-->
-          <div class="py-5 mb-3 border-bottom border-top d-none">
-            <form id="editForm" action="">
-              <p>Edit a task:</p>
-              <div class="d-flex">
-                <input class="form-control" type="text" id="editImput">
-                <button class="btn btn-secondary ms-3" type="submit">
-                  <i class="fa-solid fa fa-check" aria-hidden="true"></i>
-                </button>
-              </div>
-              <button class="btn btn-danger mt-3" id="editCancel">
-                Cancel
+          <form class="py-5 mb-3 border-bottom border-top hide" id="editForm" action="">
+            <p>Edit a task:</p>
+            <div class="d-flex">
+              <input class="form-control" type="text" id="editImput">
+              <button class="btn btn-danger ms-3" type="submit">
+                <i class="fa-solid fa fa-check" aria-hidden="true"></i>
               </button>
-            </form>
-          </div>
+            </div>
+            <button class="btn btn-danger mt-3" id="editCancel">
+              Cancel
+            </button>
+          </form>
           <!--EDIT-->
           <!--SEARCH/FILTER-->
           <div class="py-5 mb-3 border-bottom border-top d-flex gap-3">
