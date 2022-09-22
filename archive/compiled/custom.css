@@ -10769,13 +10769,8 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
-body {
-  background-color: #464646;
-}
-
 h1, .h1 {
   z-index: 5;
-  position: relative;
 }
 
 .hide {
@@ -10784,16 +10779,11 @@ h1, .h1 {
 
 #todo {
   z-index: 1;
+  overflow: hidden;
   max-width: 320px;
   position: relative;
   border-radius: 10px;
-  overflow: hidden;
 }
-
-main {
-  position: relative;
-}
-
 #todo::after {
   inset: 0;
   z-index: -1;
@@ -10807,7 +10797,13 @@ main {
   background-position: center;
   background-image: url(../image/color.jpg);
 }
-
+#todo .btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px !important;
+  height: 30px !important;
+}
 #todo .imageBg {
   pointer-events: none;
   top: -100%;
@@ -10823,11 +10819,17 @@ main {
   filter: grayscale(80%);
   animation: spinner 900s linear infinite;
 }
+#todo #editCancel {
+  width: auto !important;
+  margin-inline: auto !important;
+}
+#todo .form-control, #todo select {
+  height: 30px !important;
+}
 
 .btn i {
   pointer-events: none;
 }
-
 .btn:hover {
   transition: 0.8s;
   color: #fff !important;
@@ -10845,7 +10847,6 @@ main {
   border-top: 1px solid #fff;
   border-bottom: 1px solid #fff;
 }
-
 .todo h6, .todo .h6 {
   text-align: start;
   font-size: 12px !important;
@@ -10853,21 +10854,9 @@ main {
   padding-right: 5px !important;
 }
 
-#todo .form-control, #todo select {
-  height: 30px !important;
-}
-
-#todo #editCancel {
-  width: auto !important;
-  margin-inline: auto !important;
-}
-
-#todo .btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 30px !important;
-  height: 30px !important;
+#createImput {
+  z-index: 5;
+  position: relative;
 }
 
 .todo .btn i {
@@ -10876,30 +10865,24 @@ main {
   align-items: center;
   justify-content: center;
 }
-
-.todo.done {
+.todo .done {
   background-color: #464646;
 }
-
-.todo.done .btn.finish-todo {
-  background-color: #e24e4e !important;
+.todo .done h6, .todo .done .h6 {
+  text-decoration: line-through;
 }
-
-.todo.done .btn {
+.todo .done .btn {
   background-color: #464646 !important;
 }
-
-.todo.done .btn i {
+.todo .done .btn i {
   color: #fff !important;
 }
-
-.todo.done .btn:hover {
+.todo .done .btn:hover {
   border-color: #e24e4e !important;
   background-color: #e24e4e !important;
 }
-
-.todo.done h6, .todo.done .h6 {
-  text-decoration: line-through;
+.todo .done .btn.finish-todo {
+  background-color: #e24e4e !important;
 }
 
 @keyframes spinner {
