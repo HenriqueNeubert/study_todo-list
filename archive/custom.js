@@ -9,6 +9,27 @@ let oldInputValue;
 
 //FUNCTIONS
 
+searchImput.onkeypress = function(){
+    const selectTodos = document.querySelectorAll('h6');
+    const arr = selectTodos;
+
+    arr.forEach(function(item, indice,
+    array){
+      const itemArr = item.innerText;
+      const itemSearch = searchImput.innerText;
+      if(itemArr === itemSearch){
+        console.log('igual');
+      }
+      console.log(item, indice);
+    });
+
+    // console.log(searchImput.value);
+    // console.log(arr);
+    
+  };
+  
+
+
 function handleButtons(e)
 {
   //? pega o elemento
