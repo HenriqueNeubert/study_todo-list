@@ -34,9 +34,27 @@ body{
   background-color: $warning!important;
 }
 
+.todo{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0.5rem !important;
+
+  margin-top: 0.5rem !important;
+  margin-bottom: 0.5rem !important;
+
+  border-top: 1px solid $white;
+  border-bottom: 1px solid $white;
+}
+
 .todo h6{
   text-align: start;
   font-size: 12px!important;
+
+  margin-bottom: 0!important;
+
+  padding-right: 5px!important;
 }
 
 .todo .btn{
@@ -45,7 +63,7 @@ body{
   width: 25px;
   height: 25px;
 }
- 
+  
 .todo .btn i{
   font-size: 12px!important;
 
