@@ -16,72 +16,100 @@
   <main class="py-5">
     <section>
       <div class="container text-center text-white">  
-        <div CLASS="col-6 mx-auto">
+        <div class="col-6 mx-auto p-5" id="todo">
 
-            <h1>To do List</h1>
-
-          <form id="createForm" action="">
-            <p>Adicione a sua tarefa:</p>
-            <div class="d-flex">
-              <input class="form-control" type="text" id="createImput" placeholder="O que você vai fazer?">
-              <button class="btn btn-secondary ms-3" type="submit">
-                <i class="fa-thin fa fa-plus" aria-hidden="true"></i>
+          <h1>Todo List</h1>
+          <!--ADD-->
+          <div class="py-5 mb-3 border-bottom border-top">
+            <form id="createForm" action="">
+              <p>Add a task: </p>
+              <div class="d-flex">
+                <input class="form-control" type="text" id="createImput" placeholder="what will you do?">
+                <button class="btn btn-secondary ms-3" type="submit">
+                  <i class="fa-thin fa fa-plus" aria-hidden="true"></i>
+                </button>
+              </div>
+            </form>
+          </div>
+          <!--ADD-->
+          <!--EDIT-->
+          <div class="py-5 mb-3 border-bottom border-top">
+            <form id="editForm" action="">
+              <p>Edit a task:</p>
+              <div class="d-flex">
+                <input class="form-control" type="text" id="editImput">
+                <button class="btn btn-secondary ms-3" type="submit">
+                  <i class="fa-solid fa fa-check" aria-hidden="true"></i>
+                </button>
+              </div>
+              <button class="btn btn-secondary mt-3" id="editCancel">
+                Cancel
               </button>
+            </form>
+          </div>
+          <!--EDIT-->
+          <!--SEARCH/FILTER-->
+          <div class="py-5 mb-3 border-bottom border-top d-flex gap-3">
+            <div id="toobar">
+              <div id="search">
+                <h4>
+                  Search:
+                </h4>
+                <form id="searchForm" action="">
+                  <div class="d-flex">
+                    <input class="form-control" type="text" id="searchImput" placeholder="Search">
+                    <button class="btn btn-secondary ms-3" id="eraseButton">
+                      <i class="fa fa-times" aria-hidden="true"></i>                  
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-          </form>
-          
-          <form id="editForm" action="">
-            <p>Edite a sua tarefa:</p>
-            <div class="d-flex">
-              <input class="form-control" type="text" id="editImput">
-              <button class="btn btn-secondary ms-3" type="submit">
-                <i class="fa-solid fa fa-check" aria-hidden="true"></i>
-              </button>
-            </div>
-            <button class="btn btn-secondary" id="editCancel">
-              Cancelar
-            </button>
-          </form>
 
-          <div id="toobar">
-            <div id="search">
-              <h4>
-                Pesquisar:
-              </h4>
-              <form id="searchForm" action="">
-                <div class="d-flex">
-                  <input class="form-control" type="text" id="searchImput" placeholder="Buscar">
-                  <button class="btn btn-secondary ms-3" id="eraseButton">
-                    <i class="fa fa-times" aria-hidden="true"></i>                  
-                  </button>
-                </div>
-              </form>
+            <div class="border-start ps-3" id="filter">
+              <h4>Filter</h4>
+              <select class="form-select" name="" id="filterSelect">
+                <option value="all">All</option>
+                <option value="done">Complete</option>
+                <option value="todo">To do</option>
+              </select>
             </div>
           </div>
-
-          <div id="filter">
-            <h4>Filtrar</h4>
-            <select class="form-select" name="" id="filterSelect">
-              <option value="all">Todos</option>
-              <option value="done">Feitos</option>
-              <option value="todo">A fazer</option>
-            </select>
-          </div>
-
+          <!--LIST-->
           <div id="todoList">
-            <div class="todo">
-              <h3>Estudar php</h3>
-              <button class="btn btn-danger finish-todo">
-                <i class="fa fa-check" aria-hidden="true"></i>
-              </button>
-              <button class="btn btn-danger edit-todo">
-                <i class="fa fa-pencil" aria-hidden="true"></i>
-              </button>
-              <button class="btn btn-danger remove-todo">
-                <i class="fa fa-trash-o" aria-hidden="true"></i>
-              </button>
+
+            <div class="todo done px-2 d-flex justify-content-between align-items-center py-2 my-2 border-top border-bottom">
+              <h6 class="mb-0 pe-1">Comprar comida para a Phoebe</h6>
+              <div class="d-flex gap-1">
+                <button class="btn btn-danger finish-todo">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-danger edit-todo">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-danger remove-todo">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button>
+              </div>
             </div>
+
+            <div class="todo px-2 d-flex justify-content-between align-items-center py-2 my-2 border-top border-bottom">
+              <h6 class="mb-0 pe-1">Ir ao super mercado</h6>
+              <div class="d-flex gap-1">
+                <button class="btn btn-danger finish-todo">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-danger edit-todo">
+                  <i class="fa fa-pencil" aria-hidden="true"></i>
+                </button>
+                <button class="btn btn-danger remove-todo">
+                  <i class="fa fa-trash-o" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+
           </div>
+          <!--LIST-->
 
         </div>
       </div>

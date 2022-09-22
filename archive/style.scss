@@ -1,3 +1,77 @@
 body{
   background-color: $dark;
 }   
+#todo{
+  max-width: 350px;
+
+  position: relative;
+}
+
+#todo::before{
+  inset: 0;
+  z-index: -1;
+  content: '';
+  position: absolute;
+  
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+
+  filter: blur(1px);
+  background-size: cover;
+  background-position: center;
+  background-image: url(../image/color.jpg);
+}
+
+.btn i{
+  pointer-events: none;
+}
+
+.btn:hover{
+  transition: 0.8s;
+  color: $white!important;
+  border-color: $warning!important;
+  background-color: $warning!important;
+}
+
+.todo h6{
+  text-align: start;
+  font-size: 12px!important;
+}
+
+.todo .btn{
+  padding: 0!important;
+
+  width: 25px;
+  height: 25px;
+}
+ 
+.todo .btn i{
+  font-size: 12px!important;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.todo.done{
+  background-color: $dark;
+}
+
+.todo.done .btn{
+  background-color: $dark!important;
+}
+
+.todo.done .btn i{
+  color: $white!important;
+}
+
+.todo.done .btn:hover{
+  border-color: $danger!important;
+  background-color: $danger!important;
+}
+
+.todo.done h6{
+  // color: $danger;
+  text-decoration: line-through;
+}
