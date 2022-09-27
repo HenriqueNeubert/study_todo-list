@@ -116,7 +116,7 @@ h1{
       justify-content: center;
     }
   }
-  .done{
+  &.done{
     background-color: $dark;
     h6{
       text-decoration: line-through;

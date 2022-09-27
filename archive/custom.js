@@ -9,88 +9,67 @@ let oldInputValue;
 
 //FUNCTIONS
 
-searchImput.onkeypress = function(){
-    const selectTodos = document.querySelectorAll('h6');
-    const arr = selectTodos;
-
-    arr.forEach(function(item, indice,
-    array){
-      const itemArr = item.innerText;
-      const itemSearch = searchImput.innerText;
-      if(itemArr === itemSearch){
-        console.log('igual');
-      }
-      console.log(item, indice);
-    });
-
-    // console.log(searchImput.value);
-    // console.log(arr);
-    
-  };
-  
-
-
-function handleButtons(e)
-{
-  //? pega o elemento
-  const targetEl = e.target; //! ESTUDAR
-  //? closest = pega o elemento parente mais proximo que tenha tal classe
-  //? resumindo, ele pega o click do botao, e vai até a div que 
-  //? tem a class .todo e coloca ela colo a const parentEl
-  const parentEl = targetEl.closest('.todo');
-  let todoTitle
-
-  if(parentEl && parentEl.querySelector('h6')){
-    todoTitle = parentEl.querySelector('h6').innerText    
-  }
-
-
-  if(targetEl.classList.contains("finish-todo")){//? verifica se contem tal clase
-    // console.log('finalizar');
-    parentEl.classList.toggle('done');
-  }
-
-  if(targetEl.classList.contains("remove-todo")){
-    parentEl.remove();
-  }
-
-  if(targetEl.classList.contains("edit-todo")){
-    handleToggleForms();
-    editImput.value = todoTitle;
-    oldInputValue = todoTitle
-  }
-}
-
-const handleToggleForms = () => //!ESTUDAR 
-{  
-  editForm.classList.toggle('hide')  
-  todoForm.classList.toggle('hide')
-  todoList.classList.toggle('hide')
-}
-
 function handleTodo()
+//? main function to handle
 {
-  handleCreateImput();
+  const dataItem = handleImput(); //? verifica se algo foi digitado  
+  insertDadaBase(dataItem)
+  handleShowTodo()
+}
 
+function handleShowTodo()
+{
+  const arr = getDataBase()
+
+  cleanTodo()
+  arr.forEach(function(item) {
+    createTodo(item)   
+  });
+}
+
+function handleImput()
+{
+  const dataItem = createImput.value;
+  
+  const objItem = new Object();
+  objItem.name = dataItem;  
+  if(dataItem){
+    return dataItem
+  }else{
+    alert('erro')
+  }
+}
+
+function insertDadaBase(dataItem) //? dado do imput
+//? para enviar dados
+{
+  const arr = getDataBase() //? pegar dados já existentes / retorna um array
+  arr.push(dataItem) //? coloco o novo dado nesse array
+  
+  const newData = JSON.stringify(arr) //? transformo o array em string
+  localStorage.setItem('item', newData)  //? envia ao banco
+  
   createImput.value = '';
   
   createImput.focus();
+  return
 }
 
-const handleUpdateTodo = (editInputValue) => //!ESTUDAR 
+function getDataBase(teste)
+//? para pegar dados
 {
-  const todos = document.querySelectorAll(".todo");
+  const dataItemSaved = localStorage.getItem('item')
+  
+  if(dataItemSaved){//? verifica se há algum dado
+    return JSON.parse(dataItemSaved); //? se sim, retorna o array
+  }
+  return []//? se não, envia um array vazio
+}
 
-  todos.forEach((todo) => {
-    let todoTitle = todo.querySelector("h6")
-    
-    console.log(todoTitle);
-    console.log(oldInputValue);
-    if(todoTitle.innerText === oldInputValue){      
-      todoTitle.innerText = editInputValue;
-    }
-  })
-
+function cleanTodo()
+{
+  const teste = document.getElementById('todoList');
+  teste.innerText = ''
 }
 
 function createTodo(text)
@@ -124,13 +103,56 @@ function createTodo(text)
   todoList.appendChild(todo);
 }
 
-function handleCreateImput()
+function handleButtons(e)
 {
-  const createImputValue = createImput.value;
+  //? pega o elemento
+  const targetEl = e.target; //! ESTUDAR
+  //? closest = pega o elemento parente mais proximo que tenha tal classe
+  //? resumindo, ele pega o click do botao, e vai até a div que 
+  //? tem a class .todo e coloca ela colo a const parentEl
+  const parentEl = targetEl.closest('.todo');
+  let todoTitle
 
-  if(createImputValue){
-    createTodo(createImputValue)
+  if(parentEl && parentEl.querySelector('h6')){
+    todoTitle = parentEl.querySelector('h6').innerText    
   }
+
+  if(targetEl.classList.contains("finish-todo")){//? verifica se contem tal clase
+    parentEl.classList.toggle('done');
+  }
+
+  if(targetEl.classList.contains("remove-todo")){
+    parentEl.remove();
+  }
+
+  if(targetEl.classList.contains("edit-todo")){
+    handleToggleForms();
+    editImput.value = todoTitle;
+    oldInputValue = todoTitle
+  }
+}
+
+const handleToggleForms = () => //!ESTUDAR 
+{  
+  editForm.classList.toggle('hide')  
+  todoForm.classList.toggle('hide')
+  todoList.classList.toggle('hide')
+}
+
+const handleUpdateTodo = (editInputValue) => //!ESTUDAR 
+{
+  const todos = document.querySelectorAll(".todo");
+
+  todos.forEach((todo) => {
+    let todoTitle = todo.querySelector("h6")
+    
+    console.log(todoTitle);
+    console.log(oldInputValue);
+    if(todoTitle.innerText === oldInputValue){      
+      todoTitle.innerText = editInputValue;
+    }
+  })
+
 }
 
 //EVENTS
@@ -165,3 +187,22 @@ editForm.addEventListener("submit", (e) => {
 
   handleToggleForms();  
 });
+
+// searchImput.onkeypress = function(){
+//     const selectTodos = document.querySelectorAll('h6');
+//     const arr = selectTodos;
+
+//     arr.forEach(function(item, indice,
+//     array){
+//       const itemArr = item.innerText;
+//       const itemSearch = searchImput.innerText;
+//       if(itemArr === itemSearch){
+//         console.log('igual');
+//       }
+//       console.log(item, indice);
+//     });
+
+//     // console.log(searchImput.value);
+//     // console.log(arr);
+    
+//   };

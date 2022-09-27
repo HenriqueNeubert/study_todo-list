@@ -10865,23 +10865,23 @@ h1, .h1 {
   align-items: center;
   justify-content: center;
 }
-.todo .done {
+.todo.done {
   background-color: #464646;
 }
-.todo .done h6, .todo .done .h6 {
+.todo.done h6, .todo.done .h6 {
   text-decoration: line-through;
 }
-.todo .done .btn {
+.todo.done .btn {
   background-color: #464646 !important;
 }
-.todo .done .btn i {
+.todo.done .btn i {
   color: #fff !important;
 }
-.todo .done .btn:hover {
+.todo.done .btn:hover {
   border-color: #e24e4e !important;
   background-color: #e24e4e !important;
 }
-.todo .done .btn.finish-todo {
+.todo.done .btn.finish-todo {
   background-color: #e24e4e !important;
 }
 
