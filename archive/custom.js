@@ -4,6 +4,9 @@ const editImput = document.querySelector('#editImput');
 const todoForm = document.querySelector('#createForm');
 const editCancel = document.querySelector('#editCancel');
 const createImput = document.querySelector('#createImput');
+const searchImput = document.getElementById('searchImput');
+const filterInput = document.getElementById('filterSelect');
+const options = [...filterInput.options];
 let oldInputValue;
 
 
@@ -59,8 +62,6 @@ function updateStatus()
   todos.forEach((todo) => {
     let todoTitle = todo.querySelector("h6")
     
-    console.log(todoTitle);
-    console.log(oldInputValue);
     if(todoTitle.innerText === oldInputValue){      
       todoTitle.innerText = editInputValue;
     }
@@ -83,15 +84,39 @@ function finishTodo({target})
   handleShowTodo()
 }
 
+// handleFilter()
 
-// createImput.addEventListener("keypress", teste);
+function handleFilter()
+{   
+  // options.forEach((item) => {
+  //     return item
+  // })
+  
+  // options.forEach(function(itemB){
+  //   if(itemB.classList.contains("all")){
+  //     console.log(itemB + ' achei');  
+  //   }
+  // });
+}
 
-// function teste(){
-//   const searchImput = document.getElementById('searchImput').value
-//   const arr = getDataBase() //? pegar dados já existentes / retorna um array
-//   const dataItemVerificated = verificationDataItem(searchImput, arr)
-//   console.log(dataItemVerificated);
-// }
+
+
+
+function searchTodo(){
+  const searchValue = document.getElementById('searchImput').value;
+  const arr = getDataBase();
+  const result = arr.filter((item) => {   
+
+    if(item.name.toLowerCase().trim().indexOf(searchValue.toLowerCase().trim()) !== -1){
+      return item
+    }
+
+  })  
+  cleanTodo()
+  result.forEach(function(item, index) {
+    createTodo(item, index)   
+  });
+}
 
 
 function handleImput()
@@ -221,6 +246,11 @@ const handleUpdateTodo = (editInputValue) => //!ESTUDAR
 }
 
 //EVENTS
+
+searchImput.addEventListener("keyup", searchTodo);
+
+filterInput.addEventListener("change", handleFilter);
+
 todoForm.addEventListener('submit', (e) => { //! ESTUDAR
   //funcao anonima:
   //permitir passá-la como se 
