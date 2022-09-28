@@ -13,8 +13,32 @@ function handleTodo()
 //? main function to handle
 {
   const dataItem = handleImput(); //? verifica se algo foi digitado  
-  insertDadaBase(dataItem)
+  const arr = getDataBase() //? pegar dados já existentes / retorna um array
+  const dataItemVerificated = verificationDataItem(dataItem, arr)
+  
+  if(dataItemVerificated.length){
+    alert('Error')
+    return false
+  }
+  console.log(dataItem);
+
+  arr.push(dataItem) //? coloco o novo dado nesse array
+
+  insertDadaBase(arr)
+
+  createImput.value = '';  
+  createImput.focus();
+
   handleShowTodo()
+}
+
+function verificationDataItem(dataItem, arr)
+{
+  return arr.filter((item) => {    
+    if(dataItem.name.toLowerCase().trim() === item.name.toLowerCase().trim()){
+      return true
+    }
+  })
 }
 
 function handleShowTodo()
@@ -22,48 +46,84 @@ function handleShowTodo()
   const arr = getDataBase()
 
   cleanTodo()
-  arr.forEach(function(item) {
-    createTodo(item)   
+  arr.forEach(function(item, index) {
+    createTodo(item, index)   
   });
 }
+
+function updateStatus()
+{
+  const editInputValue = editImput.value;
+  const todos = document.querySelectorAll(".todo");
+
+  todos.forEach((todo) => {
+    let todoTitle = todo.querySelector("h6")
+    
+    console.log(todoTitle);
+    console.log(oldInputValue);
+    if(todoTitle.innerText === oldInputValue){      
+      todoTitle.innerText = editInputValue;
+    }
+  })
+
+}
+
+function finishTodo({target})
+{
+  const indexAtual = target.getAttribute('index')
+  const arr = getDataBase()
+  const newArray = arr.map((item, index) => {
+    if(parseInt(indexAtual) === index){
+      item.status = !item.status;      
+    }
+    return item
+    
+  })
+  insertDadaBase(newArray)
+  handleShowTodo()
+}
+
+
+// createImput.addEventListener("keypress", teste);
+
+// function teste(){
+//   const searchImput = document.getElementById('searchImput').value
+//   const arr = getDataBase() //? pegar dados já existentes / retorna um array
+//   const dataItemVerificated = verificationDataItem(searchImput, arr)
+//   console.log(dataItemVerificated);
+// }
+
 
 function handleImput()
 {
   const dataItem = createImput.value;
-  
   const objItem = new Object();
+
   objItem.name = dataItem;  
+  
   if(dataItem){
-    return dataItem
+    return objItem
   }else{
     alert('erro')
   }
 }
 
-function insertDadaBase(dataItem) //? dado do imput
+function insertDadaBase(arr) //? dado do imput
 //? para enviar dados
-{
-  const arr = getDataBase() //? pegar dados já existentes / retorna um array
-  arr.push(dataItem) //? coloco o novo dado nesse array
-  
+{    
   const newData = JSON.stringify(arr) //? transformo o array em string
-  localStorage.setItem('item', newData)  //? envia ao banco
-  
-  createImput.value = '';
-  
-  createImput.focus();
-  return
+  localStorage.setItem('items', newData)  //? envia ao banco
 }
 
 function getDataBase(teste)
 //? para pegar dados
 {
-  const dataItemSaved = localStorage.getItem('item')
+  const dataItemSaved = localStorage.getItem('items')
   
-  if(dataItemSaved){//? verifica se há algum dado
+  if(dataItemSaved && dataItemSaved != null){//? verifica se há algum dado
     return JSON.parse(dataItemSaved); //? se sim, retorna o array
   }
-  return []//? se não, envia um array vazio
+  return [] //? se não, envia um array vazio
 }
 
 function cleanTodo()
@@ -72,13 +132,17 @@ function cleanTodo()
   teste.innerText = ''
 }
 
-function createTodo(text)
+function createTodo(item, index)
 {
   const todo = document.createElement('div');//? cria div
   todo.classList.add('todo'); //? adiciona classe .todo
+  
+  if(item.status){
+    todo.classList.add('done');
+  }
 
   const title = document.createElement('h6');//? cria title
-  title.innerText = text; //? valor recebido do imputCreate
+  title.innerText = item.name; //? valor recebido do imputCreate
   todo.appendChild(title); //? diz: title fica dentro de todo
 
   const divBtn = document.createElement('div');//? cria div
@@ -87,6 +151,8 @@ function createTodo(text)
 
   const btnFinish = document.createElement('button');//? cria div
   btnFinish.classList.add('btn', 'btn-danger', 'finish-todo'); //? adiciona classe 
+  btnFinish.setAttribute('index', index);
+  btnFinish.addEventListener('click',e => finishTodo(e));
   btnFinish.innerHTML = '<i class="fa fa-check" aria-hidden="true"></i>';
   divBtn.appendChild(btnFinish);
 
@@ -117,9 +183,10 @@ function handleButtons(e)
     todoTitle = parentEl.querySelector('h6').innerText    
   }
 
-  if(targetEl.classList.contains("finish-todo")){//? verifica se contem tal clase
-    parentEl.classList.toggle('done');
-  }
+  // if(targetEl.classList.contains("finish-todo")){//? verifica se contem tal clase
+  //   parentEl.classList.toggle('done');
+
+  // }
 
   if(targetEl.classList.contains("remove-todo")){
     parentEl.remove();
@@ -144,10 +211,8 @@ const handleUpdateTodo = (editInputValue) => //!ESTUDAR
   const todos = document.querySelectorAll(".todo");
 
   todos.forEach((todo) => {
-    let todoTitle = todo.querySelector("h6")
+    // let todoTitle = todo.querySelector("h6")
     
-    console.log(todoTitle);
-    console.log(oldInputValue);
     if(todoTitle.innerText === oldInputValue){      
       todoTitle.innerText = editInputValue;
     }
@@ -188,21 +253,5 @@ editForm.addEventListener("submit", (e) => {
   handleToggleForms();  
 });
 
-// searchImput.onkeypress = function(){
-//     const selectTodos = document.querySelectorAll('h6');
-//     const arr = selectTodos;
+handleShowTodo()
 
-//     arr.forEach(function(item, indice,
-//     array){
-//       const itemArr = item.innerText;
-//       const itemSearch = searchImput.innerText;
-//       if(itemArr === itemSearch){
-//         console.log('igual');
-//       }
-//       console.log(item, indice);
-//     });
-
-//     // console.log(searchImput.value);
-//     // console.log(arr);
-    
-//   };

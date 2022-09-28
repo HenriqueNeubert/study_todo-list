@@ -1,6 +1,6 @@
 #### COMANDOS BÁSICOS
   ## NA RAIZ
-  npm init
+  npm run start
 
   ## NA PASTA ARCHIVE
   sass --watch custom.scss:compiled/custom.css 
@@ -10,7 +10,7 @@
   https://github.com/matheusbattisti/todo-avancado-js/blob/main/js/scripts.js
 
   ### OBJETIVOS
-  ( ) - Verificar se já existe um item com 'x' nome
-  ( ) - Passar para o localstorage se o item está marcado ou não
+  (X) - Verificar se já existe um item com 'x' nome
+  (X) - Passar para o localstorage se o item está marcado ou não
   ( ) - Filtro
   ( ) - Pesquisa
