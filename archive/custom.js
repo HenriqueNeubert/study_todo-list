@@ -48,10 +48,7 @@ function handleShowTodo()
 {
   const arr = getDataBase()
 
-  cleanTodo()
-  arr.forEach(function(item, index) {
-    createTodo(item, index)   
-  });
+  handleCreateTodo(arr)
 }
 
 function updateStatus()
@@ -110,10 +107,7 @@ function filterTodo()
     }
   });
 
-  cleanTodo()
-  newArray.forEach(function(item, index) {
-    createTodo(item, index)   
-  });
+  handleCreateTodo(newArray) 
 }
 
 function filterComplete()
@@ -127,7 +121,6 @@ function filterComplete()
   });
 
   handleCreateTodo(newArray)
-
 }
 
 function handleCreateTodo(arr)
@@ -170,10 +163,8 @@ function searchTodo(){
   }
 
   })  
-  cleanTodo()
-  result.forEach(function(item, index) {
-    createTodo(item, index)   
-  });
+
+  handleCreateTodo(result)
 }
 
 
