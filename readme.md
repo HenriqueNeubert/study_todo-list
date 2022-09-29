@@ -12,5 +12,5 @@
   ### OBJETIVOS
   (X) - Verificar se já existe um item com 'x' nome
   (X) - Passar para o localstorage se o item está marcado ou não
-  ( ) - Filtro
-  ( ) - Pesquisa
+  (X) - Filtro
+  (X) - Pesquisa
