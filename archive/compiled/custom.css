@@ -10773,7 +10773,7 @@ h1, .h1 {
   z-index: 5;
 }
 
-body {
+main {
   background: rgb(131, 58, 180) !important;
   background: linear-gradient(90deg, rgb(219, 54, 54) 0%, rgb(64, 16, 16) 50%, rgb(221, 80, 80) 100%) !important;
 }
