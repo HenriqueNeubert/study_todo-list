@@ -1,3 +1,4 @@
+let oldInputValue;
 const todoList = document.querySelector('#todoList');
 const editForm = document.querySelector('#editForm');
 const editImput = document.querySelector('#editImput');
@@ -6,8 +7,7 @@ const editCancel = document.querySelector('#editCancel');
 const createImput = document.querySelector('#createImput');
 const searchImput = document.getElementById('searchImput');
 const filterInput = document.getElementById('filterSelect');
-const options = [...filterInput.options];
-let oldInputValue;
+
 
 
 //FUNCTIONS
@@ -84,32 +84,90 @@ function finishTodo({target})
   handleShowTodo()
 }
 
-// handleFilter()
-
 function handleFilter()
-{   
-  // options.forEach((item) => {
-  //     return item
-  // })
-  
-  // options.forEach(function(itemB){
-  //   if(itemB.classList.contains("all")){
-  //     console.log(itemB + ' achei');  
-  //   }
-  // });
+{
+  const filterText = filterInput.options[filterInput.selectedIndex].text;
+  const filterValue = filterInput.value;
+
+  if(filterText === 'All'){
+    handleShowTodo()
+  }
+  if(filterText === 'Complete'){    
+    filterComplete()  
+  }
+  if(filterText === 'To do'){
+    filterTodo()
+  } 
 }
 
+function filterTodo()
+{
+  const arr = getDataBase();
+  const newArray = []
+  arr.forEach((item, index) => {
+    if(item.status === false || !item.status){
+      newArray.push(item)      
+    }
+  });
+
+  cleanTodo()
+  newArray.forEach(function(item, index) {
+    createTodo(item, index)   
+  });
+}
+
+function filterComplete()
+{
+  const arr = getDataBase();
+  const newArray = []
+  arr.forEach((item, index) => {
+    if(item.status === true){
+      newArray.push(item)      
+    }
+  });
+
+  handleCreateTodo(newArray)
+
+}
+
+function handleCreateTodo(arr)
+{
+  cleanTodo()
+  arr.forEach(function(item, index) {
+    createTodo(item, index)   
+  });
+}
+
+// var e = document.getElementById("ddlViewBy");
 
 
+// filterInput.addEventListener("change", handleFilter);
+// const all = document.getElementsByClassName('all')
+// all.addEventListener("change", function(){
+//   alert('ada')
+// });
+// function handleFilter()
+// {   
+//   options.forEach((item) => {
+//       return item
+//   })  
+//   options.forEach(function(itemB){
+//     console.log(itemB);
+//     if(itemB.classList.contains("all")){
+//       debugger
+//       console.log(itemB + ' achei');  
+//     }
+//   });
+// }
 
 function searchTodo(){
   const searchValue = document.getElementById('searchImput').value;
   const arr = getDataBase();
   const result = arr.filter((item) => {   
 
-    if(item.name.toLowerCase().trim().indexOf(searchValue.toLowerCase().trim()) !== -1){
-      return item
-    }
+  if(item.name.toLowerCase().trim().indexOf(searchValue.toLowerCase().trim()) !== -1){
+    return item
+  }
 
   })  
   cleanTodo()
@@ -247,9 +305,9 @@ const handleUpdateTodo = (editInputValue) => //!ESTUDAR
 
 //EVENTS
 
-searchImput.addEventListener("keyup", searchTodo);
+filterInput.addEventListener("change", handleFilter)
 
-filterInput.addEventListener("change", handleFilter);
+searchImput.addEventListener("keyup", searchTodo);
 
 todoForm.addEventListener('submit', (e) => { //! ESTUDAR
   //funcao anonima:
