@@ -10817,7 +10817,7 @@ h1, .h1 {
   opacity: 0.9;
   filter: blur(2px);
   filter: grayscale(80%);
-  animation: spinner 900s linear infinite;
+  animation: spinner 400s linear infinite;
 }
 #todo #editCancel {
   width: auto !important;
