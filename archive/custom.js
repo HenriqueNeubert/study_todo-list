@@ -131,28 +131,6 @@ function handleCreateTodo(arr)
   });
 }
 
-// var e = document.getElementById("ddlViewBy");
-
-
-// filterInput.addEventListener("change", handleFilter);
-// const all = document.getElementsByClassName('all')
-// all.addEventListener("change", function(){
-//   alert('ada')
-// });
-// function handleFilter()
-// {   
-//   options.forEach((item) => {
-//       return item
-//   })  
-//   options.forEach(function(itemB){
-//     console.log(itemB);
-//     if(itemB.classList.contains("all")){
-//       debugger
-//       console.log(itemB + ' achei');  
-//     }
-//   });
-// }
-
 function searchTodo(){
   const searchValue = document.getElementById('searchImput').value;
   const arr = getDataBase();
@@ -193,10 +171,12 @@ function getDataBase(teste)
 //? para pegar dados
 {
   const dataItemSaved = localStorage.getItem('items')
-  
-  if(dataItemSaved && dataItemSaved != null){//? verifica se há algum dado
+  debugger
+  if(dataItemSaved != null){//? se tiver algo
+    debugger
     return JSON.parse(dataItemSaved); //? se sim, retorna o array
   }
+  debugger
   return [] //? se não, envia um array vazio
 }
 
