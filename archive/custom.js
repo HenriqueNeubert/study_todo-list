@@ -171,12 +171,9 @@ function getDataBase(teste)
 //? para pegar dados
 {
   const dataItemSaved = localStorage.getItem('items')
-  debugger
   if(dataItemSaved != null){//? se tiver algo
-    debugger
     return JSON.parse(dataItemSaved); //? se sim, retorna o array
   }
-  debugger
   return [] //? se não, envia um array vazio
 }
 

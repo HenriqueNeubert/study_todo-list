@@ -10780,7 +10780,7 @@ h1, .h1 {
 #todo {
   z-index: 1;
   overflow: hidden;
-  max-width: 320px;
+  max-width: 450px;
   position: relative;
   border-radius: 10px;
 }
@@ -10824,6 +10824,7 @@ h1, .h1 {
   margin-inline: auto !important;
 }
 #todo .form-control, #todo select {
+  padding: 0 5px;
   height: 30px !important;
 }
 
