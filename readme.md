@@ -14,3 +14,5 @@
   (X) - Passar para o localstorage se o item está marcado ou não
   (X) - Filtro
   (X) - Pesquisa
+  ( ) - Erro ao editar item, não é  atualizado no banco
+  

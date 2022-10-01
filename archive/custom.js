@@ -8,8 +8,6 @@ const createImput = document.querySelector('#createImput');
 const searchImput = document.getElementById('searchImput');
 const filterInput = document.getElementById('filterSelect');
 
-
-
 //FUNCTIONS
 
 function handleTodo()
@@ -23,7 +21,6 @@ function handleTodo()
     alert('Error')
     return false
   }
-  console.log(dataItem);
 
   arr.push(dataItem) //? coloco o novo dado nesse array
 
@@ -54,7 +51,7 @@ function handleShowTodo()
 function updateStatus()
 {
   const editInputValue = editImput.value;
-  const todos = document.querySelectorAll(".todo");
+  const todos = document.querySelectorAll(".to_do");
 
   todos.forEach((todo) => {
     let todoTitle = todo.querySelector("h6")
@@ -64,6 +61,17 @@ function updateStatus()
     }
   })
 
+}
+
+const handleUpdateTodo = (editInputValue) => //!ESTUDAR 
+{
+  const todos = document.querySelectorAll(".todo");
+  todos.forEach((todo) => {
+    let todoTitle = todo.querySelector("h6")   
+    if(todoTitle.innerText === oldInputValue){      
+      todoTitle.innerText = editInputValue;
+    }
+  })
 }
 
 function finishTodo({target})
@@ -136,15 +144,14 @@ function searchTodo(){
   const arr = getDataBase();
   const result = arr.filter((item) => {   
 
-  if(item.name.toLowerCase().trim().indexOf(searchValue.toLowerCase().trim()) !== -1){
-    return item
-  }
+    if(item.name.toLowerCase().trim().indexOf(searchValue.toLowerCase().trim()) !== -1){
+      return item
+    }
 
   })  
 
   handleCreateTodo(result)
 }
-
 
 function handleImput()
 {
@@ -234,11 +241,6 @@ function handleButtons(e)
     todoTitle = parentEl.querySelector('h6').innerText    
   }
 
-  // if(targetEl.classList.contains("finish-todo")){//? verifica se contem tal clase
-  //   parentEl.classList.toggle('done');
-
-  // }
-
   if(targetEl.classList.contains("remove-todo")){
     parentEl.remove();
   }
@@ -257,19 +259,7 @@ const handleToggleForms = () => //!ESTUDAR
   todoList.classList.toggle('hide')
 }
 
-const handleUpdateTodo = (editInputValue) => //!ESTUDAR 
-{
-  const todos = document.querySelectorAll(".todo");
 
-  todos.forEach((todo) => {
-    // let todoTitle = todo.querySelector("h6")
-    
-    if(todoTitle.innerText === oldInputValue){      
-      todoTitle.innerText = editInputValue;
-    }
-  })
-
-}
 
 //EVENTS
 
